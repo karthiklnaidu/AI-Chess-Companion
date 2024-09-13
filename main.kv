@@ -1,0 +1,140 @@
+ScreenManager:
+    MenuWidget:
+        id: menu_widget
+    GamePlay:
+    
+<CustomLayout>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, .5
+        Rectangle:
+            size: self.size
+            pos: self.pos
+            
+<MenuWidget>:
+    name: 'main'
+    id: menu_widget
+    canvas.before:
+        Rectangle:
+            source: 'menu-wallpaper.jpeg'
+            size: self.size
+    Label:
+        id: labelID
+        font_name: 'Sackers-Gothic-Std-Light.ttf'
+        font_size: '60dp'
+        text: 'C  h  e  s  s'
+        pos_hint: {'center_x': .5, 'center_y': .55}
+    Button:
+        id: buttonID
+        font_name: 'Eurostile.ttf'
+        font_size: '30dp'
+        text: 'Start Game'
+        pos_hint: {'center_x': .5, 'center_y': .4}
+        size_hint: .4, .07
+        on_press: root.manager.current = 'second'
+        background_normal: ''
+        background_color: .2, .7, .2, .9
+    
+    
+<GamePlay>:
+    name: 'second'
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        canvas.before:
+            Color:
+                rgba: (.2, .2, .2, 1)
+            Rectangle:
+                size: root.size
+                pos: root.pos
+            
+        Label:
+            text: 'AI vs Human' 
+            size_hint: 1, .1
+            color: 1, 1, 1
+            canvas.before:
+                Color: 
+                    rgba: 0, 0, 0, .5
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            
+               
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .4
+            padding: [dp(30), dp(100), dp(40), dp(0)]
+            ai_profile: ai_profile_label
+                
+            Label:
+                size_hint: .3, 1
+                canvas.before:
+                    Rectangle:
+                        source: 'cpu2.png'
+                        pos: self.pos
+                        size: self.size
+                    
+            Label:
+                id: ai_profile_label
+                text: ''
+                
+                
+        #Image:
+            #source: 'pieces/board.png'
+        RelativeLayout:
+            ChessBoard:
+                id: chess_board
+              
+              
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .4
+            padding: [dp(30), dp(25), dp(40), dp(75)]
+            user_profile: user_profile_label
+                
+            Label:
+                size_hint: .3, 1
+                canvas.before:
+                    Rectangle:
+                        source: 'user.png'
+                        pos: self.pos
+                        size: self.size
+                    
+            Label:
+                id: user_profile_label
+                text: ''
+            
+              
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            spacing: 40
+            canvas.before:
+                Color: 
+                    rgba: .1, .1, .1, .5
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            BoxLayout:
+                padding: [dp(40), dp(5), dp(40), dp(10)]
+                Button:
+                    size_hint: .3, .7
+                    on_press: root.manager.current = 'main'
+                    background_normal: 'options.png'
+    
+            BoxLayout:
+                padding: [dp(40), dp(5), dp(40), dp(10)]
+                Button:
+                    size_hint: .3, .7
+                    on_press: root.on_back_click()
+                    background_normal: 'backward.png'
+    
+            BoxLayout:
+                padding: [dp(40), dp(5), dp(40), dp(10)]
+                Button:
+                    size_hint: .3, .7
+                    on_press: root.on_front_click()
+                    background_normal: 'forward.png'
+                    
+                    
+        

@@ -1,0 +1,24 @@
+
+
+<MenuWidget>:
+    canvas.before:
+        Rectangle:
+            source: 'menu-wallpaper.jpeg'
+            size: self.size
+    Label:
+        id: labelID
+        font_name: 'Sackers-Gothic-Std-Light.ttf'
+        font_size: '60dp'
+        text: 'C  h  e  s  s'
+        pos_hint: {'center_x': .5, 'center_y': .55}
+    Button:
+        id: buttonID
+        font_name: 'Eurostile.ttf'
+        font_size: '30dp'
+        text: 'Start Game'
+        pos_hint: {'center_x': .5, 'center_y': .4}
+        size_hint: .4, .07
+        on_press: root.manager.current('main')
+        background_normal: ''
+        background_color: .2, .7, .2, .9
+    
